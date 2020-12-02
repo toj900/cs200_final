@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/cs200_final.dir/main.cpp.o  -o cs200_final.exe -Wl,--out-implib,libcs200_final.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

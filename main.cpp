@@ -5,7 +5,7 @@ class Word{
 private:
     std::string word;
     std::string fileName;
-
+    std::string hint;
 public:
     void setWord(  std::string newWord){
         word = newWord;
@@ -18,6 +18,12 @@ public:
     }
     std::string getFile(){
         return fileName;
+    }
+    void setHint(  std::string newHint){
+        hint = newHint;
+    }
+    std::string getHint(){
+        return hint;
     }
 };
 
@@ -32,7 +38,7 @@ class History: public Word{
 };
 class Player{
 private:
-    int lives =6;
+    int lives = 6;
 
 public:
     void setLives(int reduction){
@@ -49,10 +55,11 @@ class ScoreBoard{
 
 int main() {
     std::cout << "Hello, World!" << std::endl;
-    int i = 0;
-    while (i > 10){
-        i++;
-    }
+    Word:Sports footBall;
+    footBall.setWord("Penalty");
+    footBall.setHint("Misconduct");
+    std::cout<<"Word: "<< footBall.getWord()<< "Hint: "<< footBall.getHint()<<std::endl;
+
 
     return 0;
 }

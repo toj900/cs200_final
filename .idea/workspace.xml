@@ -51,6 +51,7 @@
       </method>
     </configuration>
   </component>
+
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -60,7 +61,7 @@
       <option name="presentableId" value="Default" />
       <updated>1606944640290</updated>
       <workItem from="1606944641607" duration="1006000" />
-      <workItem from="1607026724106" duration="12400000" />
+
     </task>
     <servers />
   </component>
@@ -109,4 +110,5 @@
     </state>
     <state x="1097" y="614" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-2560.0.2048.1120/0.0.2560.1400@0.0.2560.1400" timestamp="1607028829639" />
   </component>
+
 </project>

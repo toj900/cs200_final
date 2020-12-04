@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 
+
 class Word{
 private:
     std::string word;
@@ -11,15 +12,14 @@ public:
     void setWord(  std::string newWord){
         word = newWord;
     }
+
     std::string getWord(){
         return word;
     }
     void setFileName(  std::string newFile){
         fileName = newFile;
     }
-    std::string getFile(){
-        return fileName;
-    }
+
     void setHint(  std::string newHint){
         hint = newHint;
     }
@@ -30,7 +30,7 @@ public:
 
 class Sports: public Word{
 public:
-};
+
 class Music: public Word{
 
 };
@@ -67,6 +67,7 @@ public:
         return hangman[pos];
     }
 };
+
 
 int main() {
     // Todo: add while loop to guess words.

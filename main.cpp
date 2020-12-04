@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 class Word{
 private:
@@ -74,13 +75,12 @@ int main() {
     Word:Sports footBall;
     footBall.setWord("Penalty");
     footBall.setHint("Misconduct");
-    std::cout<<"Word: "<< footBall.getWord()<<  "Hint: "<< footBall.getHint()<<std::endl;
+    //std::cout<<"Word: "<< footBall.getWord()<<  "Hint: "<< footBall.getHint()<<std::endl;
 
     // Example of Player initial lives with overloaded constructor
     Player playerOne;
 
     // Hangman print screen
-    std::cout<<playerOne.getLives()<<std::endl;
     std::string positions[]{
             " +---+\n"
             " |   |\n"
@@ -144,14 +144,23 @@ int main() {
     // Todo: Replace the following code with class calls.
     std::string word = "ass";
     std::string guess;
-    std::cout<<"Enter a letter: ";
-    std::cin>>(guess);
-    //std::string guess = "s";
+
+
 
     int size =word.size();
     bool reduce = true;
 
-    std::vector<char> l (3, '*');
+    // Use of STL Container in the form of a vector
+    std::vector<char> l (size, '*');
+
+    std::cout<<"\n"<<("Word: ");
+    //Example use of STL algorithm(s) <for_each> //Which replaces the following for loop
+    auto print = [](const char& n) { std::cout << n; };
+    // Example of use of STL iterator(s) //<vector>.cbegin and <vector>.cend
+    std::for_each(l.cbegin(), l.cend(), print);
+
+    std::cout<<"\nEnter a letter: ";
+    std::cin>>(guess);
     // Loop to compare word and player  guess, If the guess is correct will replace each * with the corresponding letters
     // If the guess is wrong, it will change the reduce bool to later reduce total lives
     for (int i=0; i<=size-1;i++){
@@ -160,18 +169,22 @@ int main() {
             reduce = false;
 
         }
-        std::cout<<l[i];
+        //std::cout<<l[i];
     }
-
+    std::for_each(l.cbegin(), l.cend(), print);
     if (reduce) {
         playerOne.setLives(1);
     }
-    std::cout<<"\n"<<(6-playerOne.getLives());
 
+
+
+    /*
     std::cout<<"\nWord: ";
     for (int i=0; i<=size-1;i++){
             std::cout<<l[i];
         }
+    */
+
     std::cout<<"\n"<<uno.getPositions(6-playerOne.getLives());
     return 0;
 }

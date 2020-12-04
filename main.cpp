@@ -1,7 +1,8 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
-<<<<<<< Updated upstream
-=======
+
 class Word{
 private:
     std::string word;
@@ -11,8 +12,7 @@ public:
     void setWord(  std::string newWord){
         word = newWord;
     }
-    //Todo: add file implementation or change virtual function to word.
-    virtual std::string getFile() = 0;
+
     std::string getWord(){
         return word;
     }
@@ -30,12 +30,6 @@ public:
 
 class Sports: public Word{
 public:
-     std::string getFile(){
-        return fileName;
-    }
-private:
-    std::string fileName = "okay";
-};
 
 class Music: public Word{
 
@@ -73,14 +67,125 @@ public:
         return hangman[pos];
     }
 };
->>>>>>> Stashed changes
+
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    int i = 0;
-    while (i > 10){
-        i++;
+    // Todo: add while loop to guess words.
+
+    // Example of Word from sports SubClass: Potential to add file with word list example;
+    Word:Sports footBall;
+    footBall.setWord("Penalty");
+    footBall.setHint("Misconduct");
+    //std::cout<<"Word: "<< footBall.getWord()<<  "Hint: "<< footBall.getHint()<<std::endl;
+
+    // Example of Player initial lives with overloaded constructor
+    Player playerOne;
+
+    // Hangman print screen
+    std::string positions[]{
+            " +---+\n"
+            " |   |\n"
+            "     |\n"
+            "     |\n"
+            "     |\n"
+            "     |\n"
+            "=========\n",
+            "+---+\n"
+            "|   |\n"
+            "0   |\n"
+            "    |\n"
+            "    |\n"
+            "    |\n"
+            "=========\n",
+            "+---+\n"
+            "|   |\n"
+            "0   |\n"
+            "|   |\n"
+            "    |\n"
+            "    |\n"
+            "=========\n",
+            " +---+\n"
+            " |   |\n"
+            " O   |\n"
+            "/|   |\n"
+            "     |\n"
+            "     |\n"
+            "=========\n",
+            " +---+\n"
+            " |   |\n"
+            " O   |\n"
+            "/|\\  |\n"
+            "     |\n"
+            "     |\n"
+            "=========\n",
+            " +---+\n"
+            " |   |\n"
+            " O   |\n"
+            "/|\\  |\n"
+            "/    |\n"
+            "     |\n"
+            "=========\n",
+            " +---+\n"
+            " |   |\n"
+            " O   |\n"
+            "/|\\  |\n"
+            "/ \\  |\n"
+            "     |\n"
+            "=========\n"
+    };
+    //Initializing  scoreboard class with ascii art
+    ScoreBoard uno;
+    uno.setPositions(positions,7);
+
+    // Test print of ascii art
+    for(int i=0; i<=6; i++){
+        //std::cout<<uno.getPositions(6);
     }
 
+    // Todo: Replace the following code with class calls.
+    std::string word = "ass";
+    std::string guess;
+
+
+
+    int size =word.size();
+    bool reduce = true;
+
+    // Use of STL Container in the form of a vector
+    std::vector<char> l (size, '*');
+
+    std::cout<<"\n"<<("Word: ");
+    //Example use of STL algorithm(s) <for_each> //Which replaces the following for loop
+    auto print = [](const char& n) { std::cout << n; };
+    // Example of use of STL iterator(s) //<vector>.cbegin and <vector>.cend
+    std::for_each(l.cbegin(), l.cend(), print);
+
+    std::cout<<"\nEnter a letter: ";
+    std::cin>>(guess);
+    // Loop to compare word and player  guess, If the guess is correct will replace each * with the corresponding letters
+    // If the guess is wrong, it will change the reduce bool to later reduce total lives
+    for (int i=0; i<=size-1;i++){
+        if (word[i] == guess[0]){
+            l[i] = guess[0];
+            reduce = false;
+
+        }
+        //std::cout<<l[i];
+    }
+    std::for_each(l.cbegin(), l.cend(), print);
+    if (reduce) {
+        playerOne.setLives(1);
+    }
+
+
+
+    /*
+    std::cout<<"\nWord: ";
+    for (int i=0; i<=size-1;i++){
+            std::cout<<l[i];
+        }
+    */
+
+    std::cout<<"\n"<<uno.getPositions(6-playerOne.getLives());
     return 0;
 }

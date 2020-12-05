@@ -1,7 +1,13 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-
+/* Todo
+ *  add class implementation for: std::string word = "astronomy";
+ *  add definition to sport, Music, and History sub class
+ *  clean up scoreboard appearance
+ *  !BUG! 
+ *
+ */
 
 class Word{
 
@@ -173,20 +179,14 @@ int main() {
     std::cout << "\n" << ("Word: ");
     //Example use of STL algorithm(s) <for_each> //Which replaces the following for loop
     auto print = [](const char &n) { std::cout << n; };
+    std::for_each(l.cbegin(), l.cend(), print);
     // Example of use of STL iterator(s) //<vector>.cbegin and <vector>.cend
+    std::cout << "\n" << uno.getPositions(6 - playerOne.getLives());
     while (playerOne.getLives() != 0) {
         bool reduce = true;
 
-        for (int i = 0; i <= size - 1; i++) {
-            if (word[i] == guess[0]) {
-                l[i] = guess[0];
-                ++count;
-                std::cout << count << "/" << size << std::endl;
-            }
-        }
-        if (count == size - 1) {
-            playerOne.setLives(6);
-        }
+
+
         std::for_each(l.cbegin(), l.cend(), print);
 
         std::cout << "\nEnter a letter: ";
@@ -194,9 +194,10 @@ int main() {
         // Loop to compare word and player  guess, If the guess is correct will replace each * with the corresponding letters
         // If the guess is wrong, it will change the reduce bool to later reduce total lives
         for (int i = 0; i <= size - 1; i++) {
-            if (word[i] == guess[0]) {
+            if (word[i] == guess[0] &&l[i]!=guess[0]) {
                 l[i] = guess[0];
                 reduce = false;
+                ++count;
 
             }
             //std::cout<<l[i];
@@ -204,6 +205,16 @@ int main() {
         std::for_each(l.cbegin(), l.cend(), print);
         if (reduce) {
             playerOne.setLives(1);
+        }
+        count = 0;
+        for (int i = 0; i <= size - 1; i++) {
+            if (l[i] != '*'){
+                count++;
+
+            }
+            if (count == size){
+                playerOne.setLives(6);
+            }
         }
 
         /*

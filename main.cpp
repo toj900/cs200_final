@@ -4,7 +4,6 @@
 
 <<<<<<< HEAD
 class Word {
-=======
 
 class Word{
 
@@ -19,7 +18,6 @@ public:
 
 <<<<<<< HEAD
     std::string getWord() {
-=======
     std::string getWord(){
 
         return word;
@@ -35,7 +33,6 @@ public:
     }
 
     void setHint(std::string newHint) {
-=======
     void setHint(  std::string newHint){
 
         hint = newHint;
@@ -52,7 +49,6 @@ public:
 };
 
 class Music : public Word {
-=======
 
 class Music: public Word{
 

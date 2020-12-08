@@ -61,12 +61,8 @@
       <option name="presentableId" value="Default" />
       <updated>1606944640290</updated>
       <workItem from="1606944641607" duration="1006000" />
-<<<<<<< HEAD
       <workItem from="1607026724106" duration="12400000" />
       <workItem from="1607186978407" duration="1782000" />
-=======
-
->>>>>>> 7c0175bafb0c76e534b0c7ca3d5594af8315e155
     </task>
     <servers />
   </component>
@@ -110,6 +106,121 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="2500" height="488" key="GridCell.Tab.1.right/-2560.0.2048.1120/0.0.2560.1400@0.0.2560.1400" timestamp="1607188645812" />
+    <state x="1097" y="614" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607028829639">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1097" y="614" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-2560.0.2048.1120/0.0.2560.1400@0.0.2560.1400" timestamp="1607028829639" />
+  </component>
+
+</project>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="cs200_final" targetName="cs200_final" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d296e10e-1467-4309-b5ac-539f750ad6f3" name="Default Changelist" comment="Added Sport Implementation" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1l7OPlFepX7IezZmK04FsosFCa3" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="cs200_final" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cs200_final" TARGET_NAME="cs200_final" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="cs200_final" RUN_TARGET_NAME="cs200_final">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d296e10e-1467-4309-b5ac-539f750ad6f3" name="Default Changelist" comment="" />
+      <created>1606944640290</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606944640290</updated>
+      <workItem from="1606944641607" duration="1006000" />
+
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added Sport Implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Sport Implementation" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="2500" height="398" key="GridCell.Tab.0.bottom" timestamp="1607040540379">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2500" height="398" key="GridCell.Tab.0.bottom/-2560.0.2048.1120/0.0.2560.1400@0.0.2560.1400" timestamp="1607040540379" />
+    <state width="2500" height="398" key="GridCell.Tab.0.center" timestamp="1607040540379">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2500" height="398" key="GridCell.Tab.0.center/-2560.0.2048.1120/0.0.2560.1400@0.0.2560.1400" timestamp="1607040540379" />
+    <state width="2500" height="398" key="GridCell.Tab.0.left" timestamp="1607040540379">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2500" height="398" key="GridCell.Tab.0.left/-2560.0.2048.1120/0.0.2560.1400@0.0.2560.1400" timestamp="1607040540379" />
+    <state width="2500" height="398" key="GridCell.Tab.0.right" timestamp="1607040540379">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2500" height="398" key="GridCell.Tab.0.right/-2560.0.2048.1120/0.0.2560.1400@0.0.2560.1400" timestamp="1607040540379" />
+    <state width="2500" height="488" key="GridCell.Tab.1.bottom" timestamp="1607036525039">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2500" height="488" key="GridCell.Tab.1.bottom/-2560.0.2048.1120/0.0.2560.1400@0.0.2560.1400" timestamp="1607036525039" />
+    <state width="2500" height="488" key="GridCell.Tab.1.center" timestamp="1607036525039">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2500" height="488" key="GridCell.Tab.1.center/-2560.0.2048.1120/0.0.2560.1400@0.0.2560.1400" timestamp="1607036525039" />
+    <state width="2500" height="488" key="GridCell.Tab.1.left" timestamp="1607036525039">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2500" height="488" key="GridCell.Tab.1.left/-2560.0.2048.1120/0.0.2560.1400@0.0.2560.1400" timestamp="1607036525039" />
+    <state width="2500" height="488" key="GridCell.Tab.1.right" timestamp="1607036525039">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2500" height="488" key="GridCell.Tab.1.right/-2560.0.2048.1120/0.0.2560.1400@0.0.2560.1400" timestamp="1607036525039" />
     <state x="1097" y="614" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607028829639">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

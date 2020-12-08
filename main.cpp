@@ -2,22 +2,21 @@
 #include <vector>
 #include <algorithm>
 /* Todo
-    1. At least 4 classes [DONE]
-    2. Inheritance & Composition/Aggregation [DONE]
-    3. Abstract class(es) [DONE]
-    4. Pure virtual function(s) [DONE]
-    5. Dynamic binding
-    6. Operator overloading [DONE]
-    7. STL algorithm(s) [DONE]
-    8. STL iterator(s) [DONE]
-    9. STL container(s) [DONE]
-    10.Exception handling
- *
- *  add class implementation for: std::string word = "astronomy";
- *  add definition to sport, Music, and History sub class
- *  clean up scoreboard appearance
- *  !BUG!
- *
+*   1. At least 4 classes [DONE]
+*   2. Inheritance & Composition/Aggregation [DONE]
+*   4. Pure virtual function(s)
+*   5. Dynamic binding
+*   6. Operator overloading
+*   7. STL algorithm(s) [DONE]
+*   8. STL iterator(s) [DONE]
+*   9. STL container(s) [DONE]
+*   10.Exception handling
+*
+*  add class implementation for: std::string word = "astronomy";
+*  add definition to sport, Music, and History sub class
+*  clean up scoreboard appearance
+*  !BUG!
+*
  */
 
 class Word{
@@ -28,7 +27,7 @@ protected:
     std::string category;
 public:
     //Creates pure virtual function for setCategory making Word an abstract class.
-    virtual void setCategory() =0;
+    //virtual void setCategory() =0;
     void setWord(std::string newWord) {
         word = newWord;
     }
@@ -51,7 +50,7 @@ private:
     std::string sport;
 public:
     //Override Pure virtual function
-    void setCategory() override;
+    //void setCategory() override;
     void setCategory(std::string category) {
         sport = category;
     }

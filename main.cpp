@@ -1,6 +1,7 @@
-#include <iostream>
-#include <vector>
 #include <algorithm>
+#include <iostream>
+#include <string>
+#include <vector>
 
 
 class Word{
@@ -9,32 +10,32 @@ private:
     std::string fileName;
     std::string hint;
 public:
-    void setWord(  std::string newWord){
+    void setWord(  std::string newWord) {
         word = newWord;
     }
 
-    std::string getWord(){
+    std::string getWord() {
         return word;
     }
-    void setFileName(  std::string newFile){
+    void setFileName(  std::string newFile) {
         fileName = newFile;
     }
 
-    void setHint(  std::string newHint){
+    void setHint(  std::string newHint) {
         hint = newHint;
     }
-    std::string getHint(){
+    std::string getHint() {
         return hint;
     }
 };
 
-class Sports: public Word{
+class Sports: public Word {
 public:
 
-class Music: public Word{
+class Music: public Word {
 
 };
-class History: public Word{
+class History: public Word {
 
 };
 class Player{
@@ -42,28 +43,28 @@ private:
     int lives;
 
 public:
-    Player(){
+    Player() {
         lives =6;
     }
-    void setLives(int reduction){
+    void setLives(int reduction) {
         lives -= reduction;
     }
-    int getLives(){
+    int getLives() {
         return lives;
     }
 };
 
-class ScoreBoard{
+class ScoreBoard {
 private:
     std::string hangman[7];
 public:
-    void setPositions(std::string *positions, int size){
-        for (int i=0; i<= size-1; i++){
+    void setPositions(std::string *positions, int size) {
+        for (int i=0; i<= size-1; i++) {
             hangman[i] = positions[i];
         }
 
     }
-    std::string getPositions(int pos){
+    std::string getPositions(int pos) {
         return hangman[pos];
     }
 };
@@ -82,7 +83,7 @@ int main() {
     Player playerOne;
 
     // Hangman print screen
-    std::string positions[]{
+    std::string positions[] {
             " +---+\n"
             " |   |\n"
             "     |\n"
@@ -138,7 +139,7 @@ int main() {
     uno.setPositions(positions,7);
 
     // Test print of ascii art
-    for(int i=0; i<=6; i++){
+    for(int i = 0; i <= 6; i++) {
         //std::cout<<uno.getPositions(6);
     }
 
@@ -154,17 +155,17 @@ int main() {
     // Use of STL Container in the form of a vector
     std::vector<char> l (size, '*');
 
-    std::cout<<"\n"<<("Word: ");
+    std::cout << "\n" << ("Word: ");
     //Example use of STL algorithm(s) <for_each> //Which replaces the following for loop
     auto print = [](const char& n) { std::cout << n; };
     // Example of use of STL iterator(s) //<vector>.cbegin and <vector>.cend
     std::for_each(l.cbegin(), l.cend(), print);
 
-    std::cout<<"\nEnter a letter: ";
-    std::cin>>(guess);
+    std::cout << "\nEnter a letter: ";
+    std::cin >> (guess);
     // Loop to compare word and player  guess, If the guess is correct will replace each * with the corresponding letters
     // If the guess is wrong, it will change the reduce bool to later reduce total lives
-    for (int i=0; i<=size-1;i++){
+    for (int i = 0; i <= size-1; i++){
         if (word[i] == guess[0]){
             l[i] = guess[0];
             reduce = false;
@@ -186,6 +187,6 @@ int main() {
         }
     */
 
-    std::cout<<"\n"<<uno.getPositions(6-playerOne.getLives());
+    std::cout << "\n" << uno.getPositions(6-playerOne.getLives());
     return 0;
 }

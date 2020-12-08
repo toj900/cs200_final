@@ -11,28 +11,20 @@
 
 class Word{
 
-private:
+protected:
     std::string word;
-    std::string fileName;
     std::string hint;
+    std::string category;
 public:
+
+    virtual void setCategory() =0;
     void setWord(std::string newWord) {
         word = newWord;
     }
 
     std::string getWord(){
-
         return word;
     }
-
-    void setFileName(std::string newFile) {
-        fileName = newFile;
-    }
-
-    std::string getFile() {
-        return fileName;
-    }
-
     void setHint(std::string newHint) {
 
         hint = newHint;
@@ -44,7 +36,16 @@ public:
 };
 
 class Sports : public Word {
+private:
+    std::string sport;
 public:
+    void setCategory() override;
+    void setCategory(std::string category) {
+        sport = category;
+    }
+    std::string getCategory() {
+        return sport;
+    }
 
 };
 
@@ -155,14 +156,24 @@ int main() {
             "/ \\  |\n"
             "     |\n"
             "=========\n"
+           /*  "        _      _\n"
+             "       (_)    | |\n"
+             " __   ___  ___| |_ ___  _ __ _   _\n "
+             "\\ \\ / / |/ __| __/ _ \\| '__| | | |\n"
+             "  \\ V /| | (__| || (_) | |  | |_| |\n"
+             "   \\_/ |_|\\___|\\__\\___/|_|  \\__,  |\n"
+             "                              __/ |\n"
+             "                              |___/ \n"
+             */
     };
     //Initializing  scoreboard class with ascii art
     ScoreBoard uno;
     uno.setPositions(positions, 7);
-
+    std::cout << "\n" << uno.getPositions(1);
     // Test print of ascii art
+
     for (int i = 0; i <= 6; i++) {
-        //std::cout<<uno.getPositions(6);
+        std::cout<<uno.getPositions(i);
     }
 
     // Todo: Replace the following code with class calls.
@@ -170,61 +181,56 @@ int main() {
     std::string guess;
 
 
+
     int size = word.size();
 
     int count = 0;
     // Use of STL Container in the form of a vector
-    std::vector<char> l(size, '*');
-
+    std::vector<char> hiddenWord(size, '*');
     std::cout << "\n" << ("Word: ");
     //Example use of STL algorithm(s) <for_each> //Which replaces the following for loop
     auto print = [](const char &n) { std::cout << n; };
-    std::for_each(l.cbegin(), l.cend(), print);
     // Example of use of STL iterator(s) //<vector>.cbegin and <vector>.cend
+    std::for_each(hiddenWord.cbegin(), hiddenWord.cend(), print);
+
     std::cout << "\n" << uno.getPositions(6 - playerOne.getLives());
     while (playerOne.getLives() != 0) {
         bool reduce = true;
 
-
-
-        std::for_each(l.cbegin(), l.cend(), print);
+        std::for_each(hiddenWord.cbegin(), hiddenWord.cend(), print);
 
         std::cout << "\nEnter a letter: ";
         std::cin >> (guess);
         // Loop to compare word and player  guess, If the guess is correct will replace each * with the corresponding letters
         // If the guess is wrong, it will change the reduce bool to later reduce total lives
         for (int i = 0; i <= size - 1; i++) {
-            if (word[i] == guess[0] &&l[i]!=guess[0]) {
-                l[i] = guess[0];
+            if (word[i] == guess[0] &&hiddenWord[i]!=guess[0]) {
+                hiddenWord[i] = guess[0];
                 reduce = false;
                 ++count;
-
             }
             //std::cout<<l[i];
         }
-        std::for_each(l.cbegin(), l.cend(), print);
+        std::for_each(hiddenWord.cbegin(), hiddenWord.cend(), print);
         if (reduce) {
             playerOne.setLives(1);
         }
         count = 0;
         for (int i = 0; i <= size - 1; i++) {
-            if (l[i] != '*'){
+            if (hiddenWord[i] != '*'){
                 count++;
-
             }
             if (count == size){
-                playerOne.setLives(6);
+                int end =0,reduct =0;
+                reduct = (-1*(playerOne.getLives()-6));
+                end = 6 - reduct;
+                //std::cout<<"end: "<<end;
+                playerOne.setLives(end);
+
             }
         }
-
-        /*
-        std::cout<<"\nWord: ";
-        for (int i=0; i<=size-1;i++){
-                std::cout<<l[i];
-            }
-        */
-
         std::cout << "\n" << uno.getPositions(6 - playerOne.getLives());
     }
+
     return 0;
 }

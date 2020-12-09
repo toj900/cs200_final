@@ -109,12 +109,12 @@ int main() {
     footBall.setHint("Misconduct");
     //std::cout<<"Word: "<< footBall.getWord()<<  "Hint: "<< footBall.getHint()<<std::endl;
 
-    // This should be moved to a class so image can be redrawn by calling a function
-    // I think specific lines can be overwritten https://codereview.stackexchange.com/a/186537/234023
-    // This way previous views are not seen
     // Hangman print screen
     Player playerOne;
 
+    // This should be moved to a class so image can be redrawn by calling a function
+    // I think specific lines can be overwritten https://codereview.stackexchange.com/a/186537/234023
+    // This way previous views are not seen
     // Hangman print screen
     std::string positions[]{
             " +---+\n"

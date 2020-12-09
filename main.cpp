@@ -1,74 +1,74 @@
-#include <iostream>
-#include <vector>
 #include <algorithm>
-/* Todo
-*   1. At least 4 classes [DONE]
-*   2. Inheritance & Composition/Aggregation [DONE]
-*   4. Pure virtual function(s)
-*   5. Dynamic binding
-*   6. Operator overloading
-*   7. STL algorithm(s) [DONE]
-*   8. STL iterator(s) [DONE]
-*   9. STL container(s) [DONE]
-*   10.Exception handling
-*
-*  add class implementation for: std::string word = "astronomy";
-*  add definition to sport, Music, and History sub class
-*  clean up scoreboard appearance
-*  !BUG!
-*
- */
+#include <iostream>
+#include <iterator>
+#include <string>
+#include <vector>
 
-class Word{
 
-protected:
+class Word {
+private:
     std::string word;
+    std::string fileName;
     std::string hint;
-    std::string category;
+
 public:
-    //Creates pure virtual function for setCategory making Word an abstract class.
-    //virtual void setCategory() =0;
-    void setWord(std::string newWord) {
+    void setWord(  std::string newWord) {
         word = newWord;
     }
 
-    std::string getWord(){
+    std::string getWord() const {
         return word;
     }
-    void setHint(std::string newHint) {
-
-        hint = newHint;
+    void setFileName(  std::string newFile) {
+        fileName = newFile;
     }
 
+    void setHint(  std::string newHint) {
+        hint = newHint;
+    }
     std::string getHint() {
         return hint;
     }
+    virtual void addWord() = 0;
 };
 
-class Sports : public Word {
+class Sports: public Word {
 private:
-    std::string sport;
+    std::vector<std::string> sports;
+    //should this be "word" instead of "sports"? apply this to the other classes :)
+
 public:
-    //Override Pure virtual function
-    //void setCategory() override;
-    void setCategory(std::string category) {
-        sport = category;
+    Sports() {
+        sports = {"soccer", "basketball", "cricket", "tennis", "boxing", "hockey", "volleyball",
+            "golf", "badminton", "baseball", "football", "rugby", "wrestling"};
     }
-    std::string getCategory() {
-        return sport;
+    void addWord() override {
+        std::string input;
+        std::cout << "Word to add to sports: ";
+        std::cin >> input;
+        sports.push_back(input);
     }
-
 };
+class Music: public Word {
+private:
+    std::vector<std::string> music;
 
-class Music : public Word {
-
+public:
+    Music() {
+        music = {"jazz", "pop", "rap", "rock", "classical", "reggae", "hiphop", "blues"};
+    }
 };
+//I changed this from history to food because im terrible at guessing history, change it if u want
+class Food: public Word {
+private:
+    std::vector<std::string> food;
 
-class History : public Word {
-
+public:
+    Food() {
+        food = {"grape", "tomato", "cheese", "chocolate", "eggroll", "pizza", "ramen", "apple"};
+    }
 };
-
-class Player {
+class Player{
 private:
     int lives;
 
@@ -76,11 +76,9 @@ public:
     Player() {
         lives = 6;
     }
-
     void setLives(int reduction) {
         lives -= reduction;
     }
-
     int getLives() {
         return lives;
     }
@@ -96,12 +94,10 @@ public:
         }
 
     }
-
     std::string getPositions(int pos) {
         return hangman[pos];
     }
 };
-
 
 int main() {
     // Todo: add while loop to guess words.
@@ -245,5 +241,3 @@ int main() {
 
     return 0;
 }
-
-

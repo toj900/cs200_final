@@ -1,74 +1,98 @@
 #include <algorithm>
 #include <iostream>
 #include <iterator>
+#include <stdlib.h>
 #include <string>
 #include <vector>
 
 
 class Word {
 private:
-    std::string word;
+    //std::string word;
+
     std::string fileName;
     std::string hint;
-
+protected:
+    std::vector<std::string> word;
 public:
-    void setWord(  std::string newWord) {
+    void setWord(std::vector<std::string> newWord) {
         word = newWord;
     }
 
-    std::string getWord() const {
+    std::vector<std::string> getWord() const {
         return word;
     }
-    void setFileName(  std::string newFile) {
+
+    void setFileName(std::string newFile) {
         fileName = newFile;
     }
 
-    void setHint(  std::string newHint) {
+    void setHint(std::string newHint) {
         hint = newHint;
     }
+
     std::string getHint() {
         return hint;
     }
+
     virtual void addWord() = 0;
 };
 
-class Sports: public Word {
+class Sports : public Word {
 private:
-    std::vector<std::string> sports;
+    //std::vector<std::string> word;
     //should this be "word" instead of "sports"? apply this to the other classes :)
 
 public:
     Sports() {
-        sports = {"soccer", "basketball", "cricket", "tennis", "boxing", "hockey", "volleyball",
-            "golf", "badminton", "baseball", "football", "rugby", "wrestling"};
+        word = {"soccer", "basketball", "cricket", "tennis", "boxing", "hockey", "volleyball",
+                "golf", "badminton", "baseball", "football", "rugby", "wrestling"};
     }
+
     void addWord() override {
         std::string input;
         std::cout << "Word to add to sports: ";
         std::cin >> input;
-        sports.push_back(input);
+        word.push_back(input);
     }
 };
-class Music: public Word {
+
+class Music : public Word {
 private:
-    std::vector<std::string> music;
+    //std::vector<std::string> word;
 
 public:
     Music() {
-        music = {"jazz", "pop", "rap", "rock", "classical", "reggae", "hiphop", "blues"};
+        word = {"jazz", "pop", "rap", "rock", "classical", "reggae", "hiphop", "blues"};
+    }
+
+    void addWord() override {
+        std::string input;
+        std::cout << "Word to add to music: ";
+        std::cin >> input;
+        word.push_back(input);
     }
 };
+
 //I changed this from history to food because im terrible at guessing history, change it if u want
-class Food: public Word {
+class Food : public Word {
 private:
-    std::vector<std::string> food;
+    //std::vector<std::string> word;
 
 public:
     Food() {
-        food = {"grape", "tomato", "cheese", "chocolate", "eggroll", "pizza", "ramen", "apple"};
+        word = {"grape", "tomato", "cheese", "chocolate", "eggroll", "pizza", "ramen", "apple"};
+    }
+
+    void addWord() override {
+        std::string input;
+        std::cout << "Word to add to food: ";
+        std::cin >> input;
+        word.push_back(input);
     }
 };
-class Player{
+
+class Player {
 private:
     int lives;
 
@@ -76,9 +100,11 @@ public:
     Player() {
         lives = 6;
     }
+
     void setLives(int reduction) {
         lives -= reduction;
     }
+
     int getLives() {
         return lives;
     }
@@ -94,28 +120,58 @@ public:
         }
 
     }
+
     std::string getPositions(int pos) {
         return hangman[pos];
     }
 };
 
 int main() {
-    // Todo: add while loop to guess words.
+    Sports *sports = new Sports;
+    Food *food = new Food;
+    Music *music = new Music;
+    ScoreBoard scoreBoard;
 
-    // Example of Word from sports SubClass: Potential to add file with word list example;
-    Word:
-    Sports footBall;
-    footBall.setWord("Penalty");
-    footBall.setHint("Misconduct");
-    //std::cout<<"Word: "<< footBall.getWord()<<  "Hint: "<< footBall.getHint()<<std::endl;
-
-    // Hangman print screen
     Player playerOne;
 
+    std::vector<std::string> wordList;
+
+
+    std::string word = "astronomy";
+
+    std::string guess;
+    std::string selection;
+    // selection of catagory of word
+    bool select = false;
+
+    while (!select) {
+        std::cout<< "Please Choose a word category: \n1: Sport Names \n2: Music Genres \n3: Food\n Enter Selection: ";
+        std::cin>>selection;
+        switch (selection[0]) {
+            case '1' :
+                wordList = sports->getWord();
+                select = true;
+                break; //optional
+            case '2'  :
+                wordList = food->getWord();
+                select = true;
+                break; //optional
+            case '3'  :
+                wordList = music->getWord();
+                select = true;
+                break;
+            default : //Optional
+                std::cout << "Please enter a valid option";
+        }
+    }
+    //Selects random word from selected category list
+    word = wordList[(rand() % wordList.size())];
+    
     // This should be moved to a class so image can be redrawn by calling a function
     // I think specific lines can be overwritten https://codereview.stackexchange.com/a/186537/234023
     // This way previous views are not seen
     // Hangman print screen
+
     std::string positions[]{
             " +---+\n"
             " |   |\n"
@@ -123,7 +179,7 @@ int main() {
             "     |\n"
             "     |\n"
             "     |\n"
-            "=========\n",
+            "=========\n\n",
             "+---+\n"
             "|   |\n"
             "0   |\n"
@@ -166,44 +222,38 @@ int main() {
             "/ \\  |\n"
             "     |\n"
             "=========\n"
-           /*  "        _      _\n"
-             "       (_)    | |\n"
-             " __   ___  ___| |_ ___  _ __ _   _\n "
-             "\\ \\ / / |/ __| __/ _ \\| '__| | | |\n"
-             "  \\ V /| | (__| || (_) | |  | |_| |\n"
-             "   \\_/ |_|\\___|\\__\\___/|_|  \\__,  |\n"
-             "                              __/ |\n"
-             "                              |___/ \n"
-             */
+            /*  "        _      _\n"
+              "       (_)    | |\n"
+              " __   ___  ___| |_ ___  _ __ _   _\n "
+              "\\ \\ / / |/ __| __/ _ \\| '__| | | |\n"
+              "  \\ V /| | (__| || (_) | |  | |_| |\n"
+              "   \\_/ |_|\\___|\\__\\___/|_|  \\__,  |\n"
+              "                              __/ |\n"
+              "                              |___/ \n"
+              */
     };
     //Initializing  scoreboard class with ascii art
-    ScoreBoard uno;
-    uno.setPositions(positions, 7);
-    std::cout << "\n" << uno.getPositions(1);
-    // Test print of ascii art
 
+    scoreBoard.setPositions(positions, 7);
+    // Test print of ascii art
     for (int i = 0; i <= 6; i++) {
-        std::cout<<uno.getPositions(i);
+        //std::cout<<scoreBoard.getPositions(i);
     }
 
-    // Todo: Replace the following code with class calls.
-    std::string word = "astronomy";
-    std::string guess;
-
-
-
     int size = word.size();
-
     int count = 0;
     // Use of STL Container in the form of a vector
     std::vector<char> hiddenWord(size, '*');
-    std::cout << "\n" << ("Word: ");
+
     //Example use of STL algorithm(s) <for_each> //Which replaces the following for loop
     auto print = [](const char &n) { std::cout << n; };
-    // Example of use of STL iterator(s) //<vector>.cbegin and <vector>.cend
-    std::for_each(hiddenWord.cbegin(), hiddenWord.cend(), print);
 
-    std::cout << "\n" << uno.getPositions(6 - playerOne.getLives());
+    // Example of use of STL iterator(s) //<vector>.cbegin and <vector>.cend
+    std::cout << "\n" << ("The word you have to guess is : ");
+    std::for_each(hiddenWord.cbegin(), hiddenWord.cend(), print);
+    std::cout << "\n" << "There are " << hiddenWord.size() << " Letters in word" << std::endl;
+
+    std::cout << "\n" << scoreBoard.getPositions(6 - playerOne.getLives());
     while (playerOne.getLives() != 0) {
         bool reduce = true;
 
@@ -214,7 +264,7 @@ int main() {
         // Loop to compare word and player  guess, If the guess is correct will replace each * with the corresponding letters
         // If the guess is wrong, it will change the reduce bool to later reduce total lives
         for (int i = 0; i <= size - 1; i++) {
-            if (word[i] == guess[0] &&hiddenWord[i]!=guess[0]) {
+            if (word[i] == guess[0] && hiddenWord[i] != guess[0]) {
                 hiddenWord[i] = guess[0];
                 reduce = false;
                 ++count;
@@ -222,24 +272,26 @@ int main() {
             //std::cout<<l[i];
         }
         std::for_each(hiddenWord.cbegin(), hiddenWord.cend(), print);
+        std::cout << "\n";
         if (reduce) {
             playerOne.setLives(1);
         }
         count = 0;
         for (int i = 0; i <= size - 1; i++) {
-            if (hiddenWord[i] != '*'){
+            if (hiddenWord[i] != '*') {
                 count++;
             }
-            if (count == size){
-                int end =0,reduct =0;
-                reduct = (-1*(playerOne.getLives()-6));
+            if (count == size) {
+                int end = 0, reduct = 0;
+                reduct = (-1 * (playerOne.getLives() - 6));
                 end = 6 - reduct;
                 //std::cout<<"end: "<<end;
                 playerOne.setLives(end);
 
             }
         }
-        std::cout << "\n" << uno.getPositions(6 - playerOne.getLives());
+        std::cout << "\n" << scoreBoard.getPositions(6 - playerOne.getLives());
+
     }
 
     return 0;

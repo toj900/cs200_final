@@ -153,11 +153,11 @@ int main() {
                 select = true;
                 break; //optional
             case '2'  :
-                wordList = food->getWord();
+                wordList = music->getWord();
                 select = true;
                 break; //optional
             case '3'  :
-                wordList = music->getWord();
+                wordList = food->getWord();
                 select = true;
                 break;
             default : //Optional
@@ -166,7 +166,7 @@ int main() {
     }
     //Selects random word from selected category list
     word = wordList[(rand() % wordList.size())];
-    
+
     // This should be moved to a class so image can be redrawn by calling a function
     // I think specific lines can be overwritten https://codereview.stackexchange.com/a/186537/234023
     // This way previous views are not seen

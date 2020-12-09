@@ -7,10 +7,14 @@
 #IncludeRegexTransform: 
 
 /cygdrive/c/Users/toj90/Documents/GitHub/cs200_final/main.cpp
+algorithm
+-
 iostream
 -
-vector
+iterator
 -
-algorithm
+string
+-
+vector
 -
 

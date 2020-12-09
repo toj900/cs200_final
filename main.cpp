@@ -30,13 +30,26 @@ public:
 };
 
 class Sports: public Word {
+private:
+    string sports = ["soccer", "basketball", "cricket", "tennis", "boxing", "hockey", "volleyball",
+                        "golf", "badminton", "baseball", "football", "rugby", "wrestling"];
+    //should this be "word" instead of "sports"? apply this to the other classes :)
+public:
+    
+};
+class Music: public Word {
+private:
+    string music = ["jazz", "pop", "rap", "rock", "classical", "reggae", "hiphop", "blues"];
+public:
+    
+};
+//I changed this from history to food because im terrible at guessing history, change it if u want
+class Food: public Word {
+private:
+    string food = ["grape", "tomato", "cheese", "chocolate", "eggroll", "pizza", "ramen", "apple"];
 public:
 
-class Music: public Word {
-
-};
-class History: public Word {
-
+    
 };
 class Player{
 private:

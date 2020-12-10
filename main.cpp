@@ -166,7 +166,7 @@ int main() {
     }
 
     //Selects random word from selected category list
-    word = wordList[(rand() % wordList.size())];
+    word = wordList[(rand() % wordList.size()-1)];
 
     // Hangman print screen
 

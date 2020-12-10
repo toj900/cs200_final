@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string>
 #include <vector>
-
+#include <ctime>
 
 class Word {
 protected:
@@ -34,6 +34,7 @@ public:
     }
 
     virtual void addWord() = 0;
+
 };
 
 class Sports : public Word {
@@ -128,9 +129,9 @@ public:
 };
 
 int main() {
-    Sports *sports = new Sports;
-    Food *food = new Food;
-    Music *music = new Music;
+
+    std::vector<Word*> words = {new Sports, new Food, new Music};
+
     ScoreBoard scoreBoard;
 
     Player playerOne;
@@ -138,12 +139,11 @@ int main() {
     std::vector<std::string> wordList, hintList;
 
     std::string word,hint;
+    std::string guess, selection;
 
-    std::string guess;
-    std::string selection;
     // selection of catagory of word
     bool select = false;
-
+    int random;
     // Pointless error catching
     std::cout << "Please Choose a word category:\n1: Sport Names\n2: Music Genres\n3: Food\nq: Quit\n";
     while (!select) {
@@ -152,18 +152,19 @@ int main() {
         try {
             switch (selection[0]) {
             case '1' :
-                wordList = sports->getWord();
-                hintList = sports->getHint();
+                //wordList = sports->getWord();
+                wordList = words[0]->getWord();
+                hintList = words[0]->getHint();
                 select = true;
                 break; //optional
             case '2' :
-                wordList = music->getWord();
-                    hintList = music->getHint();
+                wordList = words[1]->getWord();
+                hintList = words[1]->getHint();
                 select = true;
                 break; //optional
             case '3' :
-                wordList = food->getWord();
-                hintList = food->getHint();
+                wordList = words[2]->getWord();
+                hintList = words[2]->getHint();
                 select = true;
                 break;
             case 'q' :
@@ -178,11 +179,9 @@ int main() {
     }
 
     //Selects random word from selected category list
-    int random = (rand() % wordList.size());
-    for(int i=0; i<10; i++){
-        random = (rand() % wordList.size());
-        //std::cout<<random;
-    }
+    srand(time(NULL));
+    random = (rand() % wordList.size());
+
     word = wordList[random];
     hint = hintList[random];
     // Hangman print screen
@@ -273,7 +272,7 @@ int main() {
             if (word[i] == guess[0] && hiddenWord[i] != guess[0]) {
                 hiddenWord[i] = guess[0];
                 reduce = false;
-                ++count;
+                //++count;
             }
             //std::cout<<l[i];
         }

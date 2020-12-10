@@ -113,7 +113,7 @@ public:
 
 class ScoreBoard {
 private:
-    std::string hangman[7];
+    std::string hangman[8];
 
 public:
     void setPositions(std::string *positions, int size) {
@@ -184,7 +184,6 @@ int main() {
 
     word = wordList[random];
     hint = hintList[random];
-    // Hangman print screen
 
     std::string positions[]{
             " +---+\n"
@@ -235,11 +234,20 @@ int main() {
             "/|\\  |\n"
             "/ \\  |\n"
             "     |\n"
-            "=========\n"
+            "=========\n",
+            "        _      _\n"
+            "       (_)    | |\n"
+            " __   ___  ___| |_ ___  _ __ _   _\n "
+            "\\ \\ / / |/ __| __/ _ \\| '__| | | |\n"
+            "  \\ V /| | (__| || (_) | |  | |_| |\n"
+            "   \\_/ |_|\\___|\\__\\___/|_|  \\__,  |\n"
+            "                              __/ |\n"
+            "                              |___/ \n"
+
     };
     //Initializing  scoreboard class with ascii art
 
-    scoreBoard.setPositions(positions, 7);
+    scoreBoard.setPositions(positions, 8);
     // Test print of ascii art
     for (int i = 0; i <= 6; i++) {
         //std::cout<<scoreBoard.getPositions(i);
@@ -257,9 +265,10 @@ int main() {
     std::cout << "\n" << ("The word you have to guess is : ");
     std::for_each(hiddenWord.cbegin(), hiddenWord.cend(), print);
     std::cout << "\n" << "There are " << hiddenWord.size() << " Letters in word" << std::endl;
-
+    bool win =false;
     std::cout << "\n" << scoreBoard.getPositions(6 - playerOne.getLives());
-    while (playerOne.getLives() != 0) {
+    int lives = playerOne.getLives();
+    while (lives!= 0 ) {
         bool reduce = true;
 
         std::for_each(hiddenWord.cbegin(), hiddenWord.cend(), print);
@@ -272,7 +281,7 @@ int main() {
             if (word[i] == guess[0] && hiddenWord[i] != guess[0]) {
                 hiddenWord[i] = guess[0];
                 reduce = false;
-                //++count;
+                ++count;
             }
             //std::cout<<l[i];
         }
@@ -294,14 +303,19 @@ int main() {
                 int end = 0, reduct = 0;
                 reduct = (-1 * (playerOne.getLives() - 6));
                 end = 6 - reduct;
-                //std::cout<<"end: "<<end;
                 playerOne.setLives(end);
+                win = true;
+                std::cout << "\n" << scoreBoard.getPositions(7);
 
             }
         }
-        std::cout << "\n" << scoreBoard.getPositions(6 - playerOne.getLives());
-
+        int set =0;
+        set = (playerOne.getLives());
+        if (!win){
+            std::cout << "\n" << scoreBoard.getPositions(6 - set);
+        }
+        lives = playerOne.getLives();
     }
-
+    std::cout<<"Your word was:"<<word<<std::endl;
     return 0;
 }

@@ -75,9 +75,6 @@ public:
 
 //I changed this from history to food because im terrible at guessing history, change it if u want
 class Food : public Word {
-private:
-    //std::vector<std::string> word;
-
 public:
     Food() {
         word = {"grape", "tomato", "cheese", "chocolate", "eggroll", "pizza", "ramen", "apple"};
@@ -185,7 +182,7 @@ int main() {
     word = wordList[random];
     hint = hintList[random];
 
-    std::string positions[]{
+    std::string positions[] {
             " +---+\n"
             " |   |\n"
             "     |\n"
@@ -275,7 +272,8 @@ int main() {
 
         std::cout << "\nEnter a letter or \"1\" for a hint: ";
         std::cin >> (guess);
-        // Loop to compare word and player  guess, If the guess is correct will replace each * with the corresponding letters
+        guess[0] = tolower(guess[0]);
+        // Loop to compare word and player guess, If the guess is correct will replace each * with the corresponding letters
         // If the guess is wrong, it will change the reduce bool to later reduce total lives
         for (int i = 0; i <= size - 1; i++) {
             if (word[i] == guess[0] && hiddenWord[i] != guess[0]) {

@@ -7,13 +7,11 @@
 
 
 class Word {
-private:
-    //std::string word;
-
+protected:
     std::string fileName;
     std::string hint;
-protected:
     std::vector<std::string> word;
+
 public:
     void setWord(std::vector<std::string> newWord) {
         word = newWord;
@@ -39,10 +37,6 @@ public:
 };
 
 class Sports : public Word {
-private:
-    //std::vector<std::string> word;
-    //should this be "word" instead of "sports"? apply this to the other classes :)
-
 public:
     Sports() {
         word = {"soccer", "basketball", "cricket", "tennis", "boxing", "hockey", "volleyball",
@@ -58,9 +52,6 @@ public:
 };
 
 class Music : public Word {
-private:
-    //std::vector<std::string> word;
-
 public:
     Music() {
         word = {"jazz", "pop", "rap", "rock", "classical", "reggae", "hiphop", "blues"};
@@ -122,7 +113,7 @@ public:
 
     }
 
-    std::string getPositions(int pos) const {
+    std::string getPositions(int pos) {
         return hangman[pos];
     }
 };
@@ -145,10 +136,11 @@ int main() {
     bool select = false;
 
     // Pointless error catching
+    std::cout << "Please Choose a word category:\n1: Sport Names\n2: Music Genres\n3: Food\nq: Quit\n";
     while (!select) {
+        std::cout << "Enter Selection: ";
+        std::cin >> selection;
         try {
-            std::cout << "Please Choose a word category: \n1: Sport Names \n2: Music Genres \n3: Food\n Enter Selection: ";
-            std::cin >> selection;
             switch (selection[0]) {
             case '1' :
                 wordList = sports->getWord();
@@ -162,20 +154,20 @@ int main() {
                 wordList = food->getWord();
                 select = true;
                 break;
+            case 'q' :
+                return 0;
+                break;
             default : //Optional
-                throw 'e';
+                throw 'i';
             }
         } catch(...) {
-            std::cout << "Please enter a valid input." << std::endl;
+            std::cout << "\rPlease enter a valid input." << std::endl;
         }
     }
 
     //Selects random word from selected category list
     word = wordList[(rand() % wordList.size())];
 
-    // This should be moved to a class so image can be redrawn by calling a function
-    // I think specific lines can be overwritten https://codereview.stackexchange.com/a/186537/234023
-    // This way previous views are not seen
     // Hangman print screen
 
     std::string positions[]{
@@ -228,15 +220,6 @@ int main() {
             "/ \\  |\n"
             "     |\n"
             "=========\n"
-            /*  "        _      _\n"
-              "       (_)    | |\n"
-              " __   ___  ___| |_ ___  _ __ _   _\n "
-              "\\ \\ / / |/ __| __/ _ \\| '__| | | |\n"
-              "  \\ V /| | (__| || (_) | |  | |_| |\n"
-              "   \\_/ |_|\\___|\\__\\___/|_|  \\__,  |\n"
-              "                              __/ |\n"
-              "                              |___/ \n"
-              */
     };
     //Initializing  scoreboard class with ascii art
 

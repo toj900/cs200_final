@@ -178,7 +178,11 @@ int main() {
     }
 
     //Selects random word from selected category list
-    int random = (rand() % wordList.size()-1);
+    int random = (rand() % wordList.size());
+    for(int i=0; i<10; i++){
+        random = (rand() % wordList.size());
+        //std::cout<<random;
+    }
     word = wordList[random];
     hint = hintList[random];
     // Hangman print screen
@@ -261,7 +265,7 @@ int main() {
 
         std::for_each(hiddenWord.cbegin(), hiddenWord.cend(), print);
 
-        std::cout << "\nEnter a letter: ";
+        std::cout << "\nEnter a letter or \"1\" for a hint: ";
         std::cin >> (guess);
         // Loop to compare word and player  guess, If the guess is correct will replace each * with the corresponding letters
         // If the guess is wrong, it will change the reduce bool to later reduce total lives
@@ -272,6 +276,10 @@ int main() {
                 ++count;
             }
             //std::cout<<l[i];
+        }
+        if (guess[0] == '1'){
+            reduce =false;
+            std::cout<<"hint: "<<hint<<std::endl;
         }
         std::for_each(hiddenWord.cbegin(), hiddenWord.cend(), print);
         std::cout << "\n";

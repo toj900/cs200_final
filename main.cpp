@@ -9,7 +9,7 @@
 class Word {
 protected:
     std::string fileName;
-    std::string hint;
+    std::vector<std::string> hint;
     std::vector<std::string> word;
 
 public:
@@ -25,11 +25,11 @@ public:
         fileName = newFile;
     }
 
-    void setHint(std::string newHint) {
+    void setHint(std::vector<std::string> newHint) {
         hint = newHint;
     }
 
-    std::string getHint() const {
+    std::vector<std::string> getHint() const {
         return hint;
     }
 
@@ -135,9 +135,9 @@ int main() {
 
     Player playerOne;
 
-    std::vector<std::string> wordList;
+    std::vector<std::string> wordList, hintList;
 
-    std::string word = "astronomy";
+    std::string word,hint;
 
     std::string guess;
     std::string selection;
@@ -153,14 +153,17 @@ int main() {
             switch (selection[0]) {
             case '1' :
                 wordList = sports->getWord();
+                hintList = sports->getHint();
                 select = true;
                 break; //optional
             case '2' :
                 wordList = music->getWord();
+                    hintList = music->getHint();
                 select = true;
                 break; //optional
             case '3' :
                 wordList = food->getWord();
+                hintList = food->getHint();
                 select = true;
                 break;
             case 'q' :
@@ -175,8 +178,9 @@ int main() {
     }
 
     //Selects random word from selected category list
-    word = wordList[(rand() % wordList.size()-1)];
-
+    int random = (rand() % wordList.size()-1);
+    word = wordList[random];
+    hint = hintList[random];
     // Hangman print screen
 
     std::string positions[]{

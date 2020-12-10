@@ -40,7 +40,11 @@ class Sports : public Word {
 public:
     Sports() {
         word = {"soccer", "basketball", "cricket", "tennis", "boxing", "hockey", "volleyball",
-                "golf", "badminton", "baseball", "football", "rugby", "wrestling"};
+                "golf", "badminton", "baseball", "football", "wrestling"};
+        //hints are in order in accordance to the words
+        hint = {"eleven players per side", "my name is trey", "protect your sticks", "15, 30, 40, game!", "you can do it! don't give up",
+                    "slippery boxing", "be careful of that spike!", "theres a lion in the woods!", "look at that birdie go", "how strong are you with that wooden pole?",
+                        "help i'm running from 11 people at once", "don't wanna go stargazing today"};
     }
 
     void addWord() override {
@@ -55,6 +59,9 @@ class Music : public Word {
 public:
     Music() {
         word = {"jazz", "pop", "rap", "rock", "classical", "reggae", "hiphop", "blues"};
+        
+        hint = {"sexy saxaphone", "coca-cola", "what is he saying?", "patricks house", "im so sophisticated", 
+                "jama-rley", "sick beat man", "originated in the Deep South of the United States around the 1860s"};
     }
 
     void addWord() override {
@@ -73,6 +80,8 @@ private:
 public:
     Food() {
         word = {"grape", "tomato", "cheese", "chocolate", "eggroll", "pizza", "ramen", "apple"};
+        
+        hint = {"power in numbers", "fruit or veggie?", "stinky!", "happy valentines day", "stop drop and ???", "easy bake oven", "naruto's favorite", "keeps the doctor away"};
     }
 
     void addWord() override {

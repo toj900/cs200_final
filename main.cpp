@@ -31,7 +31,7 @@ public:
         hint = newHint;
     }
 
-    std::string getHint() {
+    std::string getHint() const {
         return hint;
     }
 
@@ -105,7 +105,7 @@ public:
         lives -= reduction;
     }
 
-    int getLives() {
+    int getLives() const {
         return lives;
     }
 };
@@ -113,6 +113,7 @@ public:
 class ScoreBoard {
 private:
     std::string hangman[7];
+
 public:
     void setPositions(std::string *positions, int size) {
         for (int i = 0; i <= size - 1; i++) {
@@ -121,7 +122,7 @@ public:
 
     }
 
-    std::string getPositions(int pos) {
+    std::string getPositions(int pos) const {
         return hangman[pos];
     }
 };
@@ -136,34 +137,39 @@ int main() {
 
     std::vector<std::string> wordList;
 
-
     std::string word = "astronomy";
 
     std::string guess;
-    std::string selection;
+    size_t selection;
     // selection of catagory of word
     bool select = false;
 
+    // Pointless error catching
     while (!select) {
-        std::cout<< "Please Choose a word category: \n1: Sport Names \n2: Music Genres \n3: Food\n Enter Selection: ";
-        std::cin>>selection;
-        switch (selection[0]) {
-            case '1' :
+        try {
+            std::cout << "Please Choose a word category: \n1: Sport Names \n2: Music Genres \n3: Food\n Enter Selection: ";
+            std::cin >> selection;
+            switch (selection) {
+            case 1 :
                 wordList = sports->getWord();
                 select = true;
                 break; //optional
-            case '2'  :
+            case 2 :
                 wordList = music->getWord();
                 select = true;
                 break; //optional
-            case '3'  :
+            case 3 :
                 wordList = food->getWord();
                 select = true;
                 break;
             default : //Optional
-                std::cout << "Please enter a valid option";
+                throw 'e';
+            }
+        } catch(...) {
+            std::cout << "Please enter a valid input." << std::endl;
         }
     }
+
     //Selects random word from selected category list
     word = wordList[(rand() % wordList.size())];
 

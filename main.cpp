@@ -140,7 +140,7 @@ int main() {
     std::string word = "astronomy";
 
     std::string guess;
-    size_t selection;
+    std::string selection;
     // selection of catagory of word
     bool select = false;
 
@@ -149,16 +149,16 @@ int main() {
         try {
             std::cout << "Please Choose a word category: \n1: Sport Names \n2: Music Genres \n3: Food\n Enter Selection: ";
             std::cin >> selection;
-            switch (selection) {
-            case 1 :
+            switch (selection[0]) {
+            case '1' :
                 wordList = sports->getWord();
                 select = true;
                 break; //optional
-            case 2 :
+            case '2' :
                 wordList = music->getWord();
                 select = true;
                 break; //optional
-            case 3 :
+            case '3' :
                 wordList = food->getWord();
                 select = true;
                 break;

@@ -275,6 +275,7 @@ int main() {
         guess[0] = tolower(guess[0]);
         // Loop to compare word and player guess, If the guess is correct will replace each * with the corresponding letters
         // If the guess is wrong, it will change the reduce bool to later reduce total lives
+
         for (int i = 0; i <= size - 1; i++) {
             if (word[i] == guess[0] && hiddenWord[i] != guess[0]) {
                 hiddenWord[i] = guess[0];
@@ -293,6 +294,24 @@ int main() {
             playerOne.setLives(1);
         }
         count = 0;
+        //Example use of Iterator
+        std::vector<char>::iterator z;
+        for (z = hiddenWord.begin();z<hiddenWord.end();z++){
+            if (*z != '*') {
+                count++;
+            }
+            if (count == size) {
+                int end = 0, reduct = 0;
+                reduct = (-1 * (playerOne.getLives() - 6));
+                end = 6 - reduct;
+                playerOne.setLives(end);
+                win = true;
+                std::cout << "\n" << scoreBoard.getPositions(7);
+
+            }
+        }
+        //Example of for loop without iterator
+        /*
         for (int i = 0; i <= size - 1; i++) {
             if (hiddenWord[i] != '*') {
                 count++;
@@ -307,6 +326,7 @@ int main() {
 
             }
         }
+         */
         int set =0;
         set = (playerOne.getLives());
         if (!win){
@@ -314,6 +334,6 @@ int main() {
         }
         lives = playerOne.getLives();
     }
-    std::cout<<"Your word was:"<<word<<std::endl;
+    std::cout<<"Your word was: "<<word<<std::endl;
     return 0;
 }

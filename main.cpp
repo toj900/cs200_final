@@ -106,6 +106,11 @@ public:
     int getLives() const {
         return lives;
     }
+
+    Player* operator-=(const int& amount) {
+        lives -= amount;
+        return this;
+    }
 };
 
 class ScoreBoard {
@@ -254,18 +259,22 @@ int main() {
     int count = 0;
     // Use of STL Container in the form of a vector
     std::vector<char> hiddenWord(size, '*');
+
     std::vector<char>::iterator z;
     //Example use of STL algorithm(s) <for_each> //Which replaces the following for loop
+
+
+
     auto print = [](const char &n) { std::cout << n; };
 
-    // Example of use of STL iterator(s) //<vector>.cbegin and <vector>.cend
+    //Example use of STL algorithm(s) <for_each> //Which replaces the following for loop
     std::cout << "\n" << ("The word you have to guess is : ");
     std::for_each(hiddenWord.cbegin(), hiddenWord.cend(), print);
     std::cout << "\n" << "There are " << hiddenWord.size() << " Letters in word" << std::endl;
-    bool win =false;
+    bool win = false;
     std::cout << "\n" << scoreBoard.getPositions(6 - playerOne.getLives());
     int lives = playerOne.getLives();
-    while (lives!= 0 ) {
+    while (lives != 0 ) {
         bool reduce = true;
 
         std::for_each(hiddenWord.cbegin(), hiddenWord.cend(), print);
@@ -285,13 +294,13 @@ int main() {
             //std::cout<<l[i];
         }
         if (guess[0] == '1'){
-            reduce =false;
-            std::cout<<"hint: "<<hint<<std::endl;
+            reduce = false;
+            std::cout << "hint: "<< hint << std::endl;
         }
         std::for_each(hiddenWord.cbegin(), hiddenWord.cend(), print);
         std::cout << "\n";
         if (reduce) {
-            playerOne.setLives(1);
+            playerOne.operator-=(1);
         }
         count = 0;
         //Example use of Iterator
@@ -304,7 +313,7 @@ int main() {
                 int end = 0, reduct = 0;
                 reduct = (-1 * (playerOne.getLives() - 6));
                 end = 6 - reduct;
-                playerOne.setLives(end);
+                playerOne.operator-=(end);
                 win = true;
                 std::cout << "\n" << scoreBoard.getPositions(7);
 
@@ -329,14 +338,16 @@ int main() {
          */
         int set =0;
         set = (playerOne.getLives());
-        if (!win){
+        if (!win) {
             std::cout << "\n" << scoreBoard.getPositions(6 - set);
         }
         lives = playerOne.getLives();
     }
+
     std::cout<<"Your word was: "<<word<<std::endl;
     for( int i = 0 ; i < words.size(); i++)
         delete words[i];
     words.clear();
+
     return 0;
 }

@@ -254,7 +254,7 @@ int main() {
     int count = 0;
     // Use of STL Container in the form of a vector
     std::vector<char> hiddenWord(size, '*');
-
+    std::vector<char>::iterator z;
     //Example use of STL algorithm(s) <for_each> //Which replaces the following for loop
     auto print = [](const char &n) { std::cout << n; };
 
@@ -295,7 +295,7 @@ int main() {
         }
         count = 0;
         //Example use of Iterator
-        std::vector<char>::iterator z;
+
         for (z = hiddenWord.begin();z<hiddenWord.end();z++){
             if (*z != '*') {
                 count++;
@@ -335,5 +335,8 @@ int main() {
         lives = playerOne.getLives();
     }
     std::cout<<"Your word was: "<<word<<std::endl;
+    for( int i = 0 ; i < words.size(); i++)
+        delete words[i];
+    words.clear();
     return 0;
 }

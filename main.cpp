@@ -2,7 +2,6 @@
 #include <iostream>
 #include <iterator>
 #include <stdlib.h>
-#include <string>
 #include <vector>
 #include <ctime>
 

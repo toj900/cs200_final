@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/toj90/Documents/GitHub/cs200_final/main.cpp
+/Users/robbyhechler/Documents/csfinal/main.cpp
 algorithm
 -
 iostream
@@ -14,8 +14,6 @@ iostream
 iterator
 -
 stdlib.h
--
-string
 -
 vector
 -

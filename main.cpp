@@ -53,6 +53,7 @@ public:
         std::cout << "Word to add to sports: ";
         std::cin >> input;
         word.push_back(input);
+        std::cout<<word.at(12);
     }
 };
 
@@ -60,8 +61,8 @@ class Music : public Word {
 public:
     Music() {
         word = {"jazz", "pop", "rap", "rock", "classical", "reggae", "hiphop", "blues"};
-        
-        hint = {"sexy saxaphone", "coca-cola", "what is he saying?", "patricks house", "im so sophisticated", 
+
+        hint = {"sexy saxaphone", "coca-cola", "what is he saying?", "patricks house", "im so sophisticated",
                 "jama-rley", "sick beat man", "originated in the Deep South of the United States around the 1860s"};
     }
 
@@ -78,7 +79,7 @@ class Food : public Word {
 public:
     Food() {
         word = {"grape", "tomato", "cheese", "chocolate", "eggroll", "pizza", "ramen", "apple"};
-        
+
         hint = {"power in numbers", "fruit or veggie?", "stinky!", "happy valentines day", "stop drop and ???", "easy bake oven", "naruto's favorite", "keeps the doctor away"};
     }
 
@@ -132,7 +133,7 @@ public:
 
 int main() {
 
-    std::vector<Word*> words = {new Sports, new Food, new Music};
+    std::vector<Word*> words = {new Sports,new Music, new Food };
 
     ScoreBoard scoreBoard;
 
@@ -140,7 +141,7 @@ int main() {
 
     std::vector<std::string> wordList, hintList;
 
-    std::string word,hint;
+    std::string word,hint, addWord;
     std::string guess, selection;
 
     // selection of catagory of word
@@ -172,6 +173,7 @@ int main() {
             case 'q' :
                 return 0;
                 break;
+
             default : //Optional
                 throw 'i';
             }
